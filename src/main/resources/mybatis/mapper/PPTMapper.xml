@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hy.springboot.mapper.PPTMapper">
+    <select id="getAll" resultType="com.hy.springboot.bean.PPT">
+        SELECT * FROM ppt
+    </select>
+
+    <select id="findName" resultType="java.lang.String">
+        SELECT location FROM ppt WHERE name LIKE CONCAT('%', #{name}, '%') and label2=#{label2};
+    </select>
+
+    <select id="findNamebak" resultType="java.lang.String">
+    SELECT location FROM ppt WHERE name LIKE CONCAT('%', #{name}, '%')
+     </select>
+
+    <select id="addPPT" parameterType="com.hy.springboot.bean.PPT">
+        INSERT INTO ppt VALUES(#{id},#{name},#{location},#{label1},#{label2});
+    </select>
+
+</mapper>
